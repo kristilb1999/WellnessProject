@@ -75,35 +75,54 @@ function generateCalendar() {
     }
 
 
-    // Create a calendar cell for every day of the month.
     for (let day = 1; day <= numberOfDaysInMonth; day++) {
 
-        const dayElement = document.createElement("div");
+    const dayElement = document.createElement("div");
 
-        dayElement.classList.add("calendar-day");
-
-
-        const dayNumber = document.createElement("span");
-
-        dayNumber.classList.add("day-number");
-
-        dayNumber.textContent = day;
+    dayElement.classList.add("calendar-day");
 
 
-        dayElement.appendChild(dayNumber);
+    const dayNumber = document.createElement("span");
+
+    dayNumber.classList.add("day-number");
+
+    dayNumber.textContent = day;
 
 
-        // Highlight today's date.
-        if (isToday(year, month, day)) {
-
-            dayElement.classList.add("today");
-
-        }
+    dayElement.appendChild(dayNumber);
 
 
-        calendarGrid.appendChild(dayElement);
+    // Highlight today's date.
+    if (isToday(year, month, day)) {
+
+        dayElement.classList.add("today");
 
     }
+
+
+    // Create a Date object representing this calendar day.
+    const selectedDate = new Date(
+        year,
+        month,
+        day
+    );
+
+
+    // Store the date on the calendar element.
+    dayElement.dataset.date =
+        formatDate(selectedDate);
+
+
+    // Make the day clickable.
+    dayElement.addEventListener(
+        "click",
+        () => openDay(selectedDate)
+    );
+
+
+    calendarGrid.appendChild(dayElement);
+
+}
 
 }
 
@@ -192,6 +211,38 @@ document
         goToToday
     );
 
+/**
+ * Formats a Date object as YYYY-MM-DD.
+ */
+function formatDate(date) {
+
+    const year = date.getFullYear();
+
+    const month = String(
+        date.getMonth() + 1
+    ).padStart(2, "0");
+
+    const day = String(
+        date.getDate()
+    ).padStart(2, "0");
+
+
+    return `${year}-${month}-${day}`;
+}
+
+/**
+ * Opens the selected day.
+ */
+function openDay(date) {
+
+    const formattedDate = formatDate(date);
+
+    console.log(
+        "Selected date:",
+        formattedDate
+    );
+
+}
 
 /*
  * Generate the calendar when
