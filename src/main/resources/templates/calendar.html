@@ -4,14 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>WellnessProject</title>
+    <title>Wellness Calendar</title>
+
+    <link rel="stylesheet" href="/css/calendar.css">
 </head>
 
 <body>
 
-    <h1>Welcome to WellnessProject!</h1>
+    <header class="calendar-header">
 
-    <p>Your wellness calendar is coming soon.</p>
+        <div class="calendar-title">
+            <h1>Wellness Calendar</h1>
+        </div>
+
+        <div class="calendar-navigation">
+
+            <button id="previous-month" type="button">
+                &lt;
+            </button>
+
+            <button id="today" type="button">
+                Today
+            </button>
+
+            <button id="next-month" type="button">
+                &gt;
+            </button>
+
+        </div>
+
+        <div class="calendar-view-options">
+
+            <button type="button">Year</button>
+            <button type="button" class="active">Month</button>
+            <button type="button">Week</button>
+            <button type="button">Day</button>
+
+        </div>
+
+    </header>
+
+
+    <main class="calendar-container">
+
+        <div class="calendar-month-header">
+
+            <h2 id="current-month"></h2>
+
+        </div>
+
+
+        <div id="calendar-grid" class="calendar-grid">
+
+            <!-- JavaScript will generate the calendar here -->
+
+        </div>
+
+    </main>
+
+
+    <script src="/js/calendar.js"></script>
 
 </body>
 </html>
