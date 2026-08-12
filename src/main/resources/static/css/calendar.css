@@ -120,3 +120,145 @@ body {
     background-color: #333;
     color: white;
 }
+
+/* =========================
+   Day View
+   ========================= */
+
+.day-container {
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    padding: 30px;
+}
+
+
+.day-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+
+.day-header h2 {
+    margin: 0;
+
+    font-size: 28px;
+}
+
+
+.day-header button,
+.event-form button {
+    padding: 10px 16px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    background-color: white;
+
+    cursor: pointer;
+}
+
+
+.day-header button:hover,
+.event-form button:hover {
+    background-color: #f0f0f0;
+}
+
+
+.event-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+
+.no-events {
+    padding: 30px;
+
+    text-align: center;
+
+    background-color: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+}
+
+
+.event-card {
+    padding: 20px;
+
+    background-color: white;
+
+    border: 1px solid #ddd;
+
+    border-left: 5px solid #555;
+
+    border-radius: 8px;
+}
+
+
+.event-card h3 {
+    margin-top: 0;
+}
+
+
+.event-form {
+    margin-top: 30px;
+
+    padding: 25px;
+
+    background-color: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+}
+
+
+.form-field {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    margin-bottom: 15px;
+}
+
+
+.form-field input,
+.form-field textarea {
+    padding: 10px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+}
+
+
+.form-field textarea {
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+
+.form-actions {
+    display: flex;
+
+    gap: 10px;
+}

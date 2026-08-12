@@ -237,10 +237,8 @@ function openDay(date) {
 
     const formattedDate = formatDate(date);
 
-    console.log(
-        "Selected date:",
-        formattedDate
-    );
+    window.location.href =
+        `/day?date=${formattedDate}`;
 
 }
 

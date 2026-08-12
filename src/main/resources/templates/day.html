@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Day View - Wellness Calendar</title>
+
+    <link rel="stylesheet"
+          href="/css/calendar.css">
+
+</head>
+
+
+<body>
+
+
+<header class="calendar-header">
+
+    <div class="calendar-title">
+
+        <h1>Wellness Calendar</h1>
+
+    </div>
+
+
+    <div class="calendar-navigation">
+
+        <a href="/">
+            <button type="button">
+                Month
+            </button>
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<main class="day-container">
+
+
+    <div class="day-header">
+
+        <h2 th:text="${selectedDate}">
+            Selected Date
+        </h2>
+
+        <button
+                type="button"
+                onclick="showEventForm()">
+
+            + Add Event
+
+        </button>
+
+    </div>
+
+
+
+    <section class="event-list">
+
+
+        <div
+                th:if="${events.isEmpty()}"
+                class="no-events">
+
+            <p>
+                No events scheduled for this day.
+            </p>
+
+        </div>
+
+
+
+        <div
+                th:each="event : ${events}"
+                class="event-card">
+
+            <h3
+                    th:text="${event.title}">
+                Event Title
+            </h3>
+
+
+            <p
+                    th:if="${event.description != null}"
+                    th:text="${event.description}">
+                Description
+            </p>
+
+
+            <p>
+
+                <span
+                        th:text="${event.startTime}">
+                    10:00
+                </span>
+
+                -
+
+                <span
+                        th:text="${event.endTime}">
+                    11:00
+                </span>
+
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <section
+            id="event-form"
+            class="event-form"
+            style="display: none;">
+
+
+        <h2>Add Event</h2>
+
+
+        <form
+                method="post"
+                action="/events">
+
+
+            <input
+                    type="hidden"
+                    name="date"
+                    th:value="${selectedDate}">
+
+
+            <div class="form-field">
+
+                <label for="title">
+                    Title
+                </label>
+
+                <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        required>
+
+            </div>
+
+
+
+            <div class="form-field">
+
+                <label for="description">
+                    Description
+                </label>
+
+                <textarea
+                        id="description"
+                        name="description">
+                </textarea>
+
+            </div>
+
+
+
+            <div class="form-field">
+
+                <label for="startTime">
+                    Start Time
+                </label>
+
+                <input
+                        type="time"
+                        id="startTime"
+                        name="startTime"
+                        required>
+
+            </div>
+
+
+
+            <div class="form-field">
+
+                <label for="endTime">
+                    End Time
+                </label>
+
+                <input
+                        type="time"
+                        id="endTime"
+                        name="endTime"
+                        required>
+
+            </div>
+
+
+
+            <div class="form-actions">
+
+                <button
+                        type="submit">
+
+                    Save Event
+
+                </button>
+
+
+                <button
+                        type="button"
+                        onclick="hideEventForm()">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </section>
+
+
+</main>
+
+
+
+<script>
+
+    function showEventForm() {
+
+        document.getElementById(
+            "event-form"
+        ).style.display = "block";
+
+    }
+
+
+    function hideEventForm() {
+
+        document.getElementById(
+            "event-form"
+        ).style.display = "none";
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
